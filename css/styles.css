@@ -339,16 +339,29 @@ main {
     margin-top: auto;
 }
 
-.text-link {
-    display: inline-block;
-    margin-top: 16px;
-    color: #35723b;
-    font-weight: 700;
-    text-decoration: none;
-}
+.pet-card {
+    .text-link {
+        display: block;
+        margin-top: 16px;
+        padding: 10px 16px;
+        border: 1px solid var(--secondary-color);
+        border-radius: 8px;
+        background-color: var(--primary-color);
+        color: #173226;
+        font-weight: 700;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.2s ease, border-color 0.2s ease,
+            color 0.2s ease, transform 0.2s ease;
 
-.text-link:hover {
-    text-decoration: underline;
+        &:hover,
+        &:focus {
+            background-color: #67b75c;
+            border-color: #173226;
+            color: #173226;
+            transform: translateY(-2px);
+        }
+    }
 }
 
 .pet-three { background: linear-gradient(135deg, #c99b73, #8b5e3c); }
