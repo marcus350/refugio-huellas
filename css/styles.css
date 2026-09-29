@@ -333,7 +333,7 @@ body {
     }
 
     /* ============================================================
-       ESTILOS GENERALES: formularios, tablas y pie
+       ESTILOS GENERALES: formularios, tablas y pie de página
        ============================================================ */
 
     form {
@@ -676,34 +676,12 @@ body {
                 top: 100%;
                 right: 16px;
                 z-index: 10;
-                display: block;
                 width: min(280px, calc(100vw - 32px));
-                max-height: 0;
-                padding: 0 10px;
-                overflow: hidden;
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-10px) scale(0.98);
-                transform-origin: top right;
+                padding: 10px;
                 background-color: #f8f8f8;
-                border: 1px solid transparent;
+                border: 1px solid #dcebd8;
                 border-radius: 8px;
-                box-shadow: none;
-                transition: height 0.3s ease, max-height 0.3s ease, opacity 0.2s ease,
-                    transform 0.3s ease, padding 0.3s ease, border-color 0.3s ease,
-                    box-shadow 0.3s ease, visibility 0s linear 0.3s;
-
-                &.is-open,
-                &.show {
-                    height: auto;
-                    max-height: 420px;
-                    padding: 10px;
-                    opacity: 1;
-                    visibility: visible;
-                    transform: translateY(0) scale(1);
-                    border-color: #dcebd8;
-                    box-shadow: 0 12px 24px rgba(36, 77, 45, 0.14);
-                }
+                box-shadow: 0 12px 24px rgba(36, 77, 45, 0.14);
             }
 
             .navbar-nav {

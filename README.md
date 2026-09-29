@@ -135,25 +135,13 @@ El formulario se construyó con HTML semántico usando los campos:
 * Asunto.
 * Mensaje.
 
-Luego se conectó con Formspree mediante la propiedad `action` del formulario:
+Luego se conectó con Formspree mediante la propiedad `action` del formulario. El navegador envía los datos con el método `POST`, sin JavaScript propio ni un backend:
 
 ```html
 <form action="https://formspree.io/f/mnpqovkp" method="post" id="formContacto">
 ```
 
-Además, se utilizó JavaScript con `fetch` y `FormData` para enviar los datos de forma asíncrona y mostrar un mensaje de confirmación sin recargar la página:
-
-```javascript
-fetch(formContacto.action, {
-    method: 'POST',
-    body: new FormData(formContacto),
-    headers: {
-        'Accept': 'application/json'
-    }
-})
-```
-
-Esto permite que el formulario funcione como un canal de contacto simple sin necesidad de configurar un backend completo.
+Formspree procesa el envío y lo reenvía al correo asociado con ese formulario. El endpoint debe estar activo en Formspree para recibir mensajes.
 
 #### ¿Por qué es útil?
 
@@ -161,7 +149,6 @@ Este tipo de formulario es útil porque:
 
 * permite recibir consultas reales del usuario;
 * facilita el contacto para adopción, voluntariado y donaciones;
-* mejora la experiencia de usuario al mostrar feedback inmediato;
 * ayuda al refugio a organizar mensajes sin requerir un sistema complejo;
 * mantiene la web profesional y funcional aunque siga siendo un proyecto front-end estático.
 
