@@ -6,7 +6,7 @@
 
 El proyecto representa la página de un refugio ficticio dedicado al rescate, cuidado y adopción responsable de animales que se encuentran en situación de calle o necesitan un nuevo hogar.
 
-El objetivo principal es crear una experiencia sencilla, accesible y amigable que permita conocer a los animales disponibles para adopción, obtener información sobre ellos y simular una solicitud de adopción.
+El objetivo principal es crear una experiencia sencilla, accesible y amigable que permita conocer a los animales disponibles para adopción, informarse sobre el proceso y contactar al refugio.
 
 ---
 
@@ -15,12 +15,13 @@ El objetivo principal es crear una experiencia sencilla, accesible y amigable qu
 * [🐾 Sobre el proyecto](#-sobre-el-proyecto)
 * [🎯 Objetivos](#-objetivos)
 * [✨ Funcionalidades](#-funcionalidades)
+* [🗓️ Bitácora de cambios](#️-bitácora-de-cambios)
 * [🛠️ Tecnologías utilizadas](#️-tecnologías-utilizadas)
 * [📂 Estructura del proyecto](#-estructura-del-proyecto)
 * [🚀 Instalación y ejecución](#-instalación-y-ejecución)
 * [💻 Uso de la página](#-uso-de-la-página)
 * [📱 Diseño responsive](#-diseño-responsive)
-* [🧠 Conceptos de JavaScript aplicados](#-conceptos-de-javascript-aplicados)
+* [🧩 Interactividad actual](#-interactividad-actual)
 * [🎨 Diseño e identidad](#-diseño-e-identidad)
 * [📚 Aprendizajes](#-aprendizajes)
 * [🔮 Mejoras futuras](#-mejoras-futuras)
@@ -47,7 +48,7 @@ El sitio está pensado para que cualquier persona pueda navegar fácilmente por 
 
 ### Objetivo general
 
-Desarrollar una página web interactiva utilizando HTML, CSS y JavaScript, aplicando los conocimientos adquiridos durante el curso de Desarrollo Front-End JS de Talento Tech.
+Desarrollar un sitio web multipágina para presentar un refugio de animales, sus mascotas disponibles y las formas de adopción y colaboración.
 
 ### Objetivos específicos
 
@@ -55,13 +56,10 @@ Desarrollar una página web interactiva utilizando HTML, CSS y JavaScript, aplic
 * Aplicar HTML semántico para estructurar el contenido.
 * Crear un diseño responsive adaptable a distintos dispositivos.
 * Utilizar CSS para desarrollar la identidad visual del refugio.
-* Implementar funcionalidades interactivas mediante JavaScript.
-* Manipular elementos del DOM.
-* Trabajar con arrays y objetos.
-* Implementar filtros y búsquedas.
-* Validar formularios.
-* Utilizar `localStorage` para conservar información del usuario.
-* Simular un proceso de solicitud de adopción.
+* Facilitar la navegación entre las secciones del sitio.
+* Presentar los perfiles de las mascotas con imágenes y descripciones.
+* Explicar el proceso de adopción responsable y las formas de ayudar.
+* Ofrecer un formulario de contacto conectado con Formspree.
 
 ---
 
@@ -80,47 +78,21 @@ La página principal presenta:
 
 ### 🐶 Animales en adopción
 
-Se muestra un catálogo de animales disponibles.
+El catálogo presenta doce perfiles con fotografía, nombre, descripción breve, edad y tamaño. Cada perfil incluye un enlace para consultar por esa mascota desde la página de contacto. Actualmente no hay búsqueda, filtros ni favoritos.
 
-Cada animal cuenta con información como:
+### 🐾 Guía de adopción y formas de ayudar
 
-* Nombre.
-* Especie.
-* Edad.
-* Sexo.
-* Tamaño.
-* Estado de vacunación.
-* Estado de castración.
-* Descripción.
-* Fotografía.
+La guía de adopción describe seis pasos, recomendaciones para preparar el hogar y la información que el refugio necesita para conversar con las familias. La página «Ayudar» reúne opciones para adoptar, donar, hacer voluntariado o difundir perfiles.
 
-### 🔎 Búsqueda y filtros
+La información de voluntariado incluye requisitos de inscripción (18 años o más, fotocopia del DNI y formulario completado al inscribirse), ejemplos de tareas y los turnos disponibles: lunes, miércoles y viernes, de 9:00 a 13:00 o de 15:00 a 19:00. La frecuencia de asistencia se coordina según disponibilidad y necesidades del refugio.
 
-El usuario puede encontrar animales utilizando diferentes criterios:
+### ℹ️ Página «Nosotros»
 
-* Nombre.
-* Especie.
-* Edad.
-* Sexo.
-* Tamaño.
+Presenta la historia, misión y valores del refugio, acompañados por imágenes temáticas.
 
-Los resultados se actualizan dinámicamente utilizando JavaScript.
+### 📱 Navegación adaptable
 
-### ❤️ Favoritos
-
-Los usuarios pueden marcar animales como favoritos para encontrarlos posteriormente.
-
-La información se almacena utilizando `localStorage`, permitiendo conservar los favoritos aunque se recargue la página.
-
-### 📋 Información detallada
-
-Al seleccionar un animal, se puede acceder a una vista con información más completa sobre su historia y características.
-
-### 📝 Solicitud de adopción
-
-El usuario puede completar un formulario para simular una solicitud de adopción.
-
-El formulario incluye validaciones para comprobar que la información ingresada sea correcta.
+El menú permite acceder a las seis secciones principales. En pantallas pequeñas se despliega mediante el componente colapsable de Bootstrap.
 
 ### 📩 Formulario de contacto
 
@@ -128,26 +100,26 @@ La sección de contacto del sitio incluye un formulario pensado para que persona
 
 #### ¿Cómo está configurado?
 
-El formulario se construyó con HTML semántico usando los campos:
+El formulario usa validaciones nativas del navegador (`required` y tipo de correo) y contiene los campos:
 
 * Nombre completo.
 * Correo electrónico.
 * Asunto.
 * Mensaje.
 
-Luego se conectó con Formspree mediante la propiedad `action` del formulario. El navegador envía los datos con el método `POST`, sin JavaScript propio ni un backend:
+El envío se configura con Formspree mediante `action` y el método `POST`. No requiere un backend propio ni código JavaScript personalizado:
 
 ```html
 <form action="https://formspree.io/f/mnpqovkp" method="post" id="formContacto">
 ```
 
-Formspree procesa el envío y lo reenvía al correo asociado con ese formulario. El endpoint debe estar activo en Formspree para recibir mensajes.
+Formspree procesa el envío si el endpoint está activo y correctamente configurado.
 
 #### ¿Por qué es útil?
 
 Este tipo de formulario es útil porque:
 
-* permite recibir consultas reales del usuario;
+* ofrece un canal de consulta cuando el endpoint está habilitado;
 * facilita el contacto para adopción, voluntariado y donaciones;
 * ayuda al refugio a organizar mensajes sin requerir un sistema complejo;
 * mantiene la web profesional y funcional aunque siga siendo un proyecto front-end estático.
@@ -163,11 +135,49 @@ El sitio presenta diferentes maneras de colaborar con el refugio:
 * Ser voluntario.
 * Compartir las publicaciones de los animales.
 
-### 🌙 Modo oscuro
+El sitio no incluye actualmente un formulario independiente de solicitud de adopción, modo oscuro ni persistencia de preferencias.
 
-La página puede incluir un modo oscuro para mejorar la accesibilidad y permitir al usuario elegir entre diferentes apariencias.
+---
 
-La preferencia puede almacenarse utilizando `localStorage`.
+## 🗓️ Bitácora de cambios
+
+Registro de las incorporaciones y modificaciones del proyecto, reconstruido a partir del historial de Git:
+
+### 14 de septiembre de 2026 — Base del sitio
+
+* Se creó la estructura multipágina con inicio y las secciones de mascotas, cómo adoptar, ayudar, nosotros y contacto.
+* Se incorporaron la identidad visual inicial, la hoja de estilos, el logotipo y las primeras fotografías de animales.
+* Se agregó la documentación inicial del proyecto.
+* Se añadieron imágenes adicionales para los perfiles de mascotas disponibles.
+
+### 19 de septiembre de 2026 — Navegación desplegable
+
+* Se incorporó el menú colapsable de Bootstrap y se enlazaron las páginas del sitio.
+* Se ajustaron los estilos de navegación para su uso en pantallas de distintos tamaños.
+
+### 20 de septiembre de 2026 — Catálogo de mascotas
+
+* Se completaron y ajustaron las tarjetas de perfiles de animales.
+* Se agregaron fotografías para ampliar el catálogo a doce mascotas.
+* Se mejoró el estilo de los botones y los enlaces de consulta.
+
+### 23 de septiembre de 2026 — Contenido institucional y adopción
+
+* Se desarrolló la página «Nosotros» con historia, misión, valores e imágenes.
+* Se amplió «Cómo adoptar» con información del proceso, sus pasos y recomendaciones para las familias.
+* Se actualizaron estilos y contenido de las páginas relacionadas.
+
+### 29 de septiembre de 2026 — Ajustes del menú y contacto
+
+* Se revisó el comportamiento del menú desplegable y su integración en las páginas.
+* Se ajustó el formulario de contacto para enviar nombre, correo, asunto y mensaje mediante `POST` a Formspree, sin lógica JavaScript personalizada.
+* Se actualizaron estilos y documentación para reflejar esos cambios.
+
+### 8 de octubre de 2026 — Información de voluntariado
+
+* Se agregó una sección con requisitos para inscribirse, tareas habituales y pautas de coordinación.
+* Se publicaron los días de actividad (lunes, miércoles y viernes) y los turnos de mañana (9:00 a 13:00) y tarde (15:00 a 19:00).
+* Se agregó un enlace desde la tarjeta de voluntariado para acceder a los requisitos y turnos.
 
 ---
 
@@ -177,7 +187,8 @@ La preferencia puede almacenarse utilizando `localStorage`.
 
 * **HTML5** — estructura y contenido.
 * **CSS3** — estilos, diseño y responsive design.
-* **JavaScript (ES6+)** — interactividad y lógica de la aplicación.
+* **Bootstrap 5.0.2** — estilos y menú de navegación colapsable.
+* **Google Fonts (Heebo)** — tipografía del sitio.
 
 ### Herramientas
 
@@ -188,57 +199,41 @@ La preferencia puede almacenarse utilizando `localStorage`.
 ### Tecnologías y conceptos utilizados
 
 * HTML semántico.
-* Flexbox.
-* CSS Grid.
-* Media Queries.
-* DOM.
-* Eventos.
-* Funciones.
-* Arrays.
-* Objetos.
-* Métodos de arrays.
-* Condicionales.
-* Formularios.
-* Validaciones.
-* `localStorage`.
+* Formularios con validación nativa.
+* Flexbox, CSS Grid y Media Queries.
+* Bootstrap.
+* Envío del formulario de contacto mediante Formspree.
 
 ---
 
 ## 📂 Estructura del proyecto
 
 ```text
-huellas-refugio/
+refugio-huellas/
 │
 ├── index.html
 │
 ├── pages/
-│   ├── animales.html
-│   ├── nosotros.html
+│   ├── mascotas.html
 │   ├── como-adoptar.html
 │   ├── ayudar.html
+│   ├── nosotros.html
 │   └── contacto.html
 │
 ├── css/
-│   ├── styles.css
-│   └── responsive.css
+│   └── styles.css
 │
 ├── js/
-│   ├── main.js
-│   ├── animales.js
-│   ├── favoritos.js
-│   ├── formulario.js
-│   └── tema.js
+│   └── main.js
 │
-├── img/
-│   ├── logo/
-│   ├── animales/
-│   ├── refugio/
-│   └── icons/
+├── assets/
+│   ├── huellas_logo.svg
+│   └── fotografías e imágenes del sitio
 │
 └── README.md
 ```
 
-> La estructura puede modificarse a medida que avance el desarrollo del proyecto.
+`js/main.js` contiene código de prueba comentado y no se carga desde las páginas actuales. La navegación colapsable funciona con el bundle de Bootstrap incluido desde CDN.
 
 ---
 
@@ -253,12 +248,12 @@ git clone URL_DEL_REPOSITORIO
 ### 2. Ingresar a la carpeta
 
 ```bash
-cd huellas-refugio
+cd refugio-huellas
 ```
 
 ### 3. Abrir el proyecto
 
-El proyecto no requiere instalación de dependencias externas.
+El proyecto no requiere instalación de paquetes ni proceso de compilación. Bootstrap y la tipografía se cargan desde CDN, por lo que se necesita conexión a Internet para esos recursos.
 
 Puede abrirse directamente desde `index.html`.
 
@@ -277,7 +272,7 @@ Click derecho sobre index.html
 
 ## 💻 Uso de la página
 
-El flujo principal del sitio es:
+Un recorrido habitual por el sitio es:
 
 ```text
              🏠 INICIO
@@ -290,22 +285,13 @@ El flujo principal del sitio es:
   Ver animales       Formas de ayudar
         │
         ↓
-   🔎 Filtrar
+  🐶 Ver perfiles
         │
         ↓
-  🐶 Elegir animal
+ 📩 Consultar por contacto
         │
         ↓
- 📋 Ver información
-        │
-        ↓
- ❤️ Solicitar adopción
-        │
-        ↓
- 📝 Completar formulario
-        │
-        ↓
-    ✅ Confirmación
+ Envío a Formspree
 ```
 
 ---
@@ -323,76 +309,15 @@ Se utilizan herramientas como:
 
 * Flexbox.
 * CSS Grid.
-* Media Queries.
-* Unidades relativas.
-* Diseño adaptable.
+* Componentes de Bootstrap.
+* Media Queries y unidades relativas.
+* Diseño adaptable a computadoras, tablets y celulares.
 
 ---
 
-## 🧠 Conceptos de JavaScript aplicados
+## 🧩 Interactividad actual
 
-El proyecto busca aplicar los principales conceptos aprendidos durante el curso.
-
-### Arrays y objetos
-
-Los animales pueden almacenarse como objetos dentro de un array:
-
-```javascript
-const animales = [
-    {
-        nombre: "Luna",
-        especie: "Perro",
-        edad: 2,
-        sexo: "Hembra",
-        tamaño: "Mediano"
-    },
-    {
-        nombre: "Milo",
-        especie: "Gato",
-        edad: 4,
-        sexo: "Macho",
-        tamaño: "Pequeño"
-    }
-];
-```
-
-### Manipulación del DOM
-
-JavaScript se utiliza para generar y modificar dinámicamente diferentes elementos de la página.
-
-### Eventos
-
-Se utilizan eventos para responder a las acciones del usuario, por ejemplo:
-
-* Clicks.
-* Búsquedas.
-* Cambios en filtros.
-* Envío de formularios.
-* Selección de favoritos.
-
-### Métodos de arrays
-
-Se utilizan métodos como:
-
-* `filter()`
-* `find()`
-* `map()`
-* `forEach()`
-* `some()`
-
-para trabajar con los datos de los animales.
-
-### LocalStorage
-
-Se utiliza `localStorage` para conservar información como:
-
-* Animales favoritos.
-* Preferencia de tema.
-* Información necesaria para determinadas funcionalidades.
-
-### Validación de formularios
-
-Los formularios cuentan con validaciones realizadas mediante JavaScript para evitar el envío de información incorrecta o incompleta.
+El menú colapsable utiliza el JavaScript incluido en Bootstrap. El formulario de contacto usa controles HTML y validaciones nativas del navegador; el envío se delega a Formspree. El catálogo y el resto del contenido son estáticos: no se generan desde JavaScript ni se guardan datos en `localStorage`.
 
 ---
 
@@ -419,12 +344,9 @@ Este proyecto permite poner en práctica los conocimientos adquiridos durante el
 * Estructuración de páginas con HTML.
 * Diseño de interfaces utilizando CSS.
 * Creación de sitios responsive.
-* Manipulación del DOM.
-* Programación con JavaScript.
-* Manejo de eventos.
-* Trabajo con arrays y objetos.
-* Validación de formularios.
-* Persistencia de datos con `localStorage`.
+* Uso de Bootstrap para la navegación adaptable.
+* Organización de perfiles y secciones de contenido.
+* Configuración de un formulario de contacto externo.
 * Organización de un proyecto Front-End.
 * Uso de Git y GitHub.
 * Buenas prácticas de desarrollo web.
@@ -447,6 +369,8 @@ Si el proyecto continuara desarrollándose, podrían incorporarse nuevas funcion
 * 🔔 Notificaciones sobre nuevos animales disponibles.
 * 🩺 Historial veterinario de cada animal.
 * 👥 Panel administrativo para el refugio.
+* 🔎 Búsqueda y filtros para el catálogo.
+* ❤️ Favoritos y preferencias guardadas para cada visitante.
 
 Estas funcionalidades requerirían tecnologías adicionales y un backend.
 
@@ -456,9 +380,9 @@ Estas funcionalidades requerirían tecnologías adicionales y un backend.
 
 **Huellas es un proyecto educativo y ficticio desarrollado para el curso de Desarrollo Front-End JS de Talento Tech.**
 
-Los animales, historias, estadísticas, datos de contacto y demás información presentada en el sitio son utilizados únicamente con fines demostrativos.
+Los perfiles, historias, estadísticas y datos de contacto presentados en el sitio son demostrativos. El formulario está configurado para enviar los datos ingresados al endpoint de Formspree indicado en el HTML, si ese endpoint continúa activo; no se deben enviar datos personales reales mientras se utilice el proyecto como demostración.
 
-El proyecto no representa actualmente a un refugio de animales real ni recibe solicitudes o donaciones reales.
+El proyecto no representa actualmente a un refugio de animales real. Los enlaces para adoptar o donar son informativos y no procesan adopciones ni pagos.
 
 ---
 

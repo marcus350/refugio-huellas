@@ -566,6 +566,12 @@ body {
        ============================================================ */
 
     /* Esta pagina usa tarjetas y acciones generales de colaboracion. */
+    .section-lead {
+        display: inline-block;
+        max-width: 720px;
+        margin: 20px 0 30px;
+        color: var(--text-color-light);
+    }
 
     /* ============================================================
        PAGINA: NOSOTROS (pages/nosotros.html)
