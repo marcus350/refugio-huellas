@@ -124,6 +124,19 @@ Este tipo de formulario es útil porque:
 * ayuda al refugio a organizar mensajes sin requerir un sistema complejo;
 * mantiene la web profesional y funcional aunque siga siendo un proyecto front-end estático.
 
+### 💬 Historias de adopción de la comunidad
+
+En la sección de historias de la página «Mascotas», los usuarios pueden compartir su experiencia mediante un formulario con estos campos obligatorios:
+
+* Nombre de quien comparte la historia.
+* Nombre de la mascota.
+* Fecha de adopción.
+* Historia.
+
+La fecha no puede ser posterior al día actual: el calendario limita las fechas disponibles y el formulario vuelve a validar el dato antes de guardarlo. Las historias se conservan en `localStorage` del navegador y se muestran en la página al volver a visitarla. Cada historia compartida permite editar sus datos o borrarla, previa confirmación. Estas acciones solo afectan las historias ingresadas por los usuarios, no los ejemplos incluidos en la página.
+
+El almacenamiento es local a cada navegador y dispositivo; las historias no se envían al refugio ni se sincronizan con otros usuarios. Si se borran los datos del navegador, también se borran las historias guardadas allí.
+
 ### 🆘 Formas de ayudar
 
 El sitio presenta diferentes maneras de colaborar con el refugio:
@@ -135,7 +148,7 @@ El sitio presenta diferentes maneras de colaborar con el refugio:
 * Ser voluntario.
 * Compartir las publicaciones de los animales.
 
-El sitio no incluye actualmente un formulario independiente de solicitud de adopción, modo oscuro ni persistencia de preferencias.
+El sitio no incluye actualmente un formulario independiente de solicitud de adopción ni modo oscuro.
 
 ---
 
@@ -179,6 +192,13 @@ Registro de las incorporaciones y modificaciones del proyecto, reconstruido a pa
 * Se publicaron los días de actividad (lunes, miércoles y viernes) y los turnos de mañana (9:00 a 13:00) y tarde (15:00 a 19:00).
 * Se agregó un enlace desde la tarjeta de voluntariado para acceder a los requisitos y turnos.
 
+### 19 de noviembre de 2026 — Historias de adopción
+
+* Se agregó un formulario obligatorio para compartir historias de adopción en la página «Mascotas».
+* Las historias se guardan en `localStorage` y se cargan al volver a la página.
+* Se incorporaron opciones para editar y borrar historias, con confirmación antes de borrarlas.
+* Se impide seleccionar o guardar fechas de adopción futuras.
+
 ---
 
 ## 🛠️ Tecnologías utilizadas
@@ -203,6 +223,7 @@ Registro de las incorporaciones y modificaciones del proyecto, reconstruido a pa
 * Flexbox, CSS Grid y Media Queries.
 * Bootstrap.
 * Envío del formulario de contacto mediante Formspree.
+* JavaScript para gestionar las historias compartidas y su persistencia en `localStorage`.
 
 ---
 
@@ -233,7 +254,7 @@ refugio-huellas/
 └── README.md
 ```
 
-`js/main.js` contiene código de prueba comentado y no se carga desde las páginas actuales. La navegación colapsable funciona con el bundle de Bootstrap incluido desde CDN.
+`js/main.js` gestiona el envío del formulario de contacto y las historias de adopción en la página «Mascotas». La navegación colapsable funciona con el bundle de Bootstrap incluido desde CDN.
 
 ---
 
@@ -317,7 +338,7 @@ Se utilizan herramientas como:
 
 ## 🧩 Interactividad actual
 
-El menú colapsable utiliza el JavaScript incluido en Bootstrap. El formulario de contacto usa controles HTML y validaciones nativas del navegador; el envío se delega a Formspree. El catálogo y el resto del contenido son estáticos: no se generan desde JavaScript ni se guardan datos en `localStorage`.
+El menú colapsable utiliza el JavaScript incluido en Bootstrap. El formulario de contacto usa validaciones nativas del navegador y delega el envío a Formspree. En la página «Mascotas», JavaScript valida, muestra, edita y borra las historias de la comunidad, que se guardan en el `localStorage` del navegador. El catálogo y el resto del contenido son estáticos.
 
 ---
 

@@ -332,6 +332,54 @@ body {
         letter-spacing: 0.06em;
     }
 
+    .story-form-card {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 28px;
+        background: var(--card-background);
+        border-radius: 18px;
+        box-shadow: 0 8px 20px var(--card-shadow);
+
+        h2 {
+            margin-bottom: 8px;
+            color: #1f392b;
+        }
+    }
+
+    .community-stories {
+        margin-top: 40px;
+
+        > h2 {
+            margin-bottom: 20px;
+            color: #1f392b;
+        }
+
+        .empty-stories {
+            color: var(--text-color-light);
+        }
+    }
+
+    .story-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+
+        button {
+            padding: 9px 14px;
+            font-size: 0.9rem;
+        }
+
+        .delete-story-button {
+            background-color: #f8e5e3;
+            color: #842d27;
+
+            &:hover {
+                background-color: #f0cfcb;
+            }
+        }
+    }
+
     /* ============================================================
        ESTILOS GENERALES: formularios, tablas y pie de página
        ============================================================ */
@@ -400,6 +448,15 @@ body {
         background-color: #e9f7ef;
         color: #1e5d3a;
         border: 1px solid #bde2c7;
+        border-radius: 10px;
+        padding: 10px 12px;
+        margin-top: 10px;
+    }
+
+    .error {
+        background-color: #fff0ef;
+        color: #8a2520;
+        border: 1px solid #edc1bd;
         border-radius: 10px;
         padding: 10px 12px;
         margin-top: 10px;

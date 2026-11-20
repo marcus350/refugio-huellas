@@ -222,6 +222,33 @@
                 </article>
                 <article data-aos="zoom-in" class="review-card"><span class="review-pet">Teo · adoptado en mayo</span><blockquote>“Teo nos eligió desde el primer encuentro. Hoy cada mañana empieza con sus ronroneos y una dosis de alegría.”</blockquote><p>— Martina</p></article>
             </div>
+            <div class="story-form-card">
+                <div class="section-heading">
+                    <p class="eyebrow">Tu historia</p>
+                    <h2>Compartí tu experiencia de adopción</h2>
+                </div>
+                <form id="storyForm">
+                    <label for="storyAuthor">Tu nombre</label>
+                    <input type="text" id="storyAuthor" name="author" autocomplete="name" required>
+
+                    <label for="storyPet">Nombre de tu mascota</label>
+                    <input type="text" id="storyPet" name="pet" required>
+
+                    <label for="storyAdoptionDate">¿Cuándo la adoptaste?</label>
+                    <input type="date" id="storyAdoptionDate" name="adoptionDate" required>
+
+                    <label for="storyText">Tu historia</label>
+                    <textarea id="storyText" name="story" placeholder="Contanos cómo fue su llegada y qué cambió desde entonces..." required></textarea>
+
+                    <button type="submit">Guardar mi historia</button>
+                    <button type="button" id="cancelStoryEdit" hidden>Cancelar edición</button>
+                    <p id="storyFormStatus" class="success" role="status" aria-live="polite" hidden></p>
+                </form>
+            </div>
+            <div class="community-stories">
+                <h2>Historias de nuestra comunidad</h2>
+                <div class="review-grid" id="communityStories" aria-live="polite"></div>
+            </div>
         </section>
 
         <section class="adoption-preview">
@@ -246,5 +273,6 @@
     <script>
         AOS.init();
     </script>
+    <script src="../js/main.js"></script>
 </body>
 </html>
